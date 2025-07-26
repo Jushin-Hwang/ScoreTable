@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조별 점수판</title>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; flex-direction: column; align-items: center; }
+        h1 { cursor: pointer; } /* Make the title clickable */
+        .team-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
+        .team-card {
+            border: 1px solid #ccc;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            display: flex; /* Use flexbox for button alignment */
+            flex-direction: column; /* Stack score and buttons vertically */
+            align-items: center; /* Center items horizontally */
+        }
+        .team-score { font-size: 2em; font-weight: bold; color: #333; margin-bottom: 15px; } /* Score on top, adjusted margin */
+        .button-group {
+            display: flex; /* Flexbox for the two buttons */
+            justify-content: space-around; /* Distribute space around items */
+            width: 100%; /* Make button group take full width of card */
+            gap: 10px; /* Space between buttons */
+        }
+        .team-card button {
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            flex-grow: 1; /* Allow buttons to grow and fill space */
+            max-width: 48%; /* Limit button width for better spacing */
+        }
+        .team-card button.increase {
+            background-color: #4CAF50; /* 증가 버튼 색상 */
+        }
+        .team-card button.decrease {
+            background-color: #f44336; /* 감소 버튼 색상 */
+        }
+        .team-card button.increase:hover { background-color: #45a049; }
+        .team-card button.decrease:hover { background-color: #da190b; }
+    </style>
+</head>
+<body>
+    <h1 onclick="resetAllScores()">조별 점수판</h1>
+    <div class="team-container">
+        <div class="team-card">
+            <div id="team1-score" class="team-score">0</div>
+            <div class="button-group">
+                <button class="decrease" onclick="changeScore('team1', -10)">1조 -10</button>
+                <button class="increase" onclick="changeScore('team1', 10)">1조 +10</button>
+            </div>
+        </div>
+        <div class="team-card">
+            <div id="team2-score" class="team-score">0</div>
+            <div class="button-group">
+                <button class="decrease" onclick="changeScore('team2', -10)">2조 -10</button>
+                <button class="increase" onclick="changeScore('team2', 10)">2조 +10</button>
+            </div>
+        </div>
+        <div class="team-card">
+            <div id="team3-score" class="team-score">0</div>
+            <div class="button-group">
+                <button class="decrease" onclick="changeScore('team3', -10)">3조 -10</button>
+                <button class="increase" onclick="changeScore('team3', 10)">3조 +10</button>
+            </div>
+        </div>
+        <div class="team-card">
+            <div id="team4-score" class="team-score">0</div>
+            <div class="button-group">
+                <button class="decrease" onclick="changeScore('team4', -10)">4조 -10</button>
+                <button class="increase" onclick="changeScore('team4', 10)">4조 +10</button>
+            </div>
+        </div>
+        <div class="team-card">
+            <div id="team5-score" class="team-score">0</div>
+            <div class="button-group">
+                <button class="decrease" onclick="changeScore('team5', -10)">5조 -10</button>
+                <button class="increase" onclick="changeScore('team5', 10)">5조 +10</button>
+            </div>
+        </div>
+        <div class="team-card">
+            <div id="team6-score" class="team-score">0</div>
+            <div class="button-group">
+                <button class="decrease" onclick="changeScore('team6', -10)">6조 -10</button>
+                <button class="increase" onclick="changeScore('team6', 10)">6조 +10</button>
+            </div>
+        </div>
+        <div class="team-card">
+            <div id="team7-score" class="team-score">0</div>
+            <div class="button-group">
+                <button class="decrease" onclick="changeScore('team7', -10)">7조 -10</button>
+                <button class="increase" onclick="changeScore('team7', 10)">7조 +10</button>
+            </div>
+        </div>
+        <div class="team-card">
+            <div id="team8-score" class="team-score">0</div>
+            <div class="button-group">
+                <button class="decrease" onclick="changeScore('team8', -10)">8조 -10</button>
+                <button class="increase" onclick="changeScore('team8', 10)">8조 +10</button>
+            </div>
+        </div>
+        <div class="team-card">
+            <div id="team9-score" class="team-score">0</div>
+            <div class="button-group">
+                <button class="decrease" onclick="changeScore('team9', -10)">9조 -10</button>
+                <button class="increase" onclick="changeScore('team9', 10)">9조 +10</button>
+            </div>
+        </div>
+        <div class="team-card">
+            <div id="team10-score" class="team-score">0</div>
+            <div class="button-group">
+                <button class="decrease" onclick="changeScore('team10', -10)">10조 -10</button>
+                <button class="increase" onclick="changeScore('team10', 10)">10조 +10</button>
+            </div>
+        </div>
+        <div class="team-card">
+            <div id="team11-score" class="team-score">0</div>
+            <div class="button-group">
+                <button class="decrease" onclick="changeScore('team11', -10)">11조 -10</button>
+                <button class="increase" onclick="changeScore('team11', 10)">11조 +10</button>
+            </div>
+        </div>
+        <div class="team-card">
+            <div id="team12-score" class="team-score">0</div>
+            <div class="button-group">
+                <button class="decrease" onclick="changeScore('team12', -10)">12조 -10</button>
+                <button class="increase" onclick="changeScore('team12', 10)">12조 +10</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 각 조의 점수를 저장할 객체
+        const teamScores = {
+            team1: 0, team2: 0, team3: 0, team4: 0,
+            team5: 0, team6: 0, team7: 0, team8: 0,
+            team9: 0, team10: 0, team11: 0, team12: 0
+        };
+
+        // 점수를 변경(증가/감소)시키는 범용 함수
+        function changeScore(teamId, amount) {
+            teamScores[teamId] += amount;
+            // 점수가 음수가 되지 않도록 최소값을 0으로 설정
+            if (teamScores[teamId] < 0) {
+                teamScores[teamId] = 0;
+            }
+            document.getElementById(teamId + '-score').innerText = teamScores[teamId];
+        }
+
+        // 모든 조의 점수를 0으로 초기화하는 함수
+        function resetAllScores() {
+            for (const teamId in teamScores) {
+                teamScores[teamId] = 0;
+                document.getElementById(teamId + '-score').innerText = 0;
+            }
+        }
+    </script>
+</body>
+</html>
